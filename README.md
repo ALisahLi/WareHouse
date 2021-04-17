@@ -8,12 +8,13 @@
 يحتوي البرنامج على 4 جداول اساسية والعلاقة التي بينهم many-to-many
 
 - employees
-- items
+- assets_items
 - employees_items
-- 
-جدول الموظفين 
+- items
 
 
+
+جدول الموظفين
 
 ``` sql
 
@@ -36,34 +37,31 @@ CREATE TABLE `employees` (
 
 
 جدول العهد  السابقة يمكن استيراد العهد كملف   excel 
-  هذا الجدول قمت باستيراده مع معلومات الموظف لاظهار الجرد السابق ومقارنته مع الجرد الجديد 
+  
+ 
+ هذا الجدول قمت باستيراده مع معلومات الموظف لاظهار الجرد السابق ومقارنته مع الجرد الجديد
+ 
+ ملاحظة :
+ item_type 
+ - 
+  - 1 = اجهزة
+  - 2 = اثاث
+  - 3 = قرطاسية
 
 ``` sql
-
-	
-CREATE TABLE `items` (
+CREATE TABLE `assets_items` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
- `user_id` int(11) DEFAULT NULL,
- `dept_name` varchar(255) NOT NULL,
- `full_name` varchar(255) NOT NULL,
- `national_id` varchar(255) NOT NULL,
- `items` varchar(255) NOT NULL,
- `items_desc` varchar(255) NOT NULL,
- `items_status` varchar(255) NOT NULL,
- `items_qr` varchar(255) NOT NULL,
- `emp_name` varchar(255) NOT NULL,
- `enter_date` date NOT NULL,
- `editor_name` varchar(255) NOT NULL,
- `edit_date` date NOT NULL,
+ `item` varchar(255) DEFAULT NULL,
+ `item_count` int(11) DEFAULT NULL,
+ `item_type` int(11) DEFAULT NULL,
  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=668 DEFAULT CHARSET=utf8
+) ENGINE=MyISAM AUTO_INCREMENT=164 DEFAULT CHARSET=utf8
 ```
 
 
 جدول العلاقة 
 
 ``` sql
-
 CREATE TABLE `employees_items` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `user_id` varchar(11) DEFAULT NULL,
@@ -80,19 +78,28 @@ CREATE TABLE `employees_items` (
 
 جدول العهد السابقة للموظفين العام الماضي
 
-``` sql
-
-CREATE TABLE `assets_items` (
+``` sql	
+CREATE TABLE `items` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
- `item` varchar(255) DEFAULT NULL,
- `item_count` int(11) DEFAULT NULL,
- `item_type` int(11) DEFAULT NULL,
+ `user_id` int(11) DEFAULT NULL,
+ `dept_name` varchar(255) NOT NULL,
+ `full_name` varchar(255) NOT NULL,
+ `national_id` varchar(255) NOT NULL,
+ `items` varchar(255) NOT NULL,
+ `items_desc` varchar(255) NOT NULL,
+ `items_status` varchar(255) NOT NULL,
+ `items_qr` varchar(255) NOT NULL,
+ `emp_name` varchar(255) NOT NULL,
+ `enter_date` date NOT NULL,
+ `editor_name` varchar(255) NOT NULL,
+ `edit_date` date NOT NULL,
  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=164 DEFAULT CHARSET=utf8
+) ENGINE=MyISAM AUTO_INCREMENT=668 DEFAULT CHARSET=utf8
+
 ```
 
 
 يقوم البرنامج بالاستعلام برقم الهوية 
  ثم ادخال الاصول في جدول العلاقة 
 
-
+ويمكن مشاهدة الاصول في السنة الماضية
