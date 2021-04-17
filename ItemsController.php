@@ -169,11 +169,5 @@ class ItemsController extends Controller
     }
     
         
-    // How IS Enterd
-    function showdata(){
-         $result = 'd';
-            
-            return view('admin.items.showdata',compact('result'));
-            
-    } 
+
 }
